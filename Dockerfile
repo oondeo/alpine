@@ -6,3 +6,5 @@ ADD scripts/apk-install /usr/local/sbin/apk-install
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk-install dash@testing && rm /bin/sh ; ln -s /bin/dash /bin/sh
 
+ADD localtime /etc/localtime
+
