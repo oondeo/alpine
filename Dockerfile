@@ -17,7 +17,7 @@ VOLUME /etc/skel
 
 WORKDIR /app
 
-ENTRYPOINT ["/sbin/tini","-g","--"]
+ENTRYPOINT ["/sbin/tini", "-g" ,"--", "/usr/local/bin/start.sh"]
 
-CMD [ "start.sh" ] 
+CMD [ "/sh" ] 
 
