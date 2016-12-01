@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:edge
 
 ADD scripts/* /usr/local/bin/
 
@@ -19,5 +19,4 @@ WORKDIR /app
 
 ENTRYPOINT ["/sbin/tini", "-g" ,"--", "/usr/local/bin/start.sh"]
 
-CMD [ "/sh" ] 
-
+CMD [ "/sh" ]
