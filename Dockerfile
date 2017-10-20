@@ -4,8 +4,7 @@ FROM alpine:latest
 #edge repository breaks installs
 #RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
 ENV TINI_VERSION="20171019"
-RUN chmod +x /usr/local/bin/* && \
-    echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk add --no-cache tini && \
     apk add --no-cache dash@testing \
