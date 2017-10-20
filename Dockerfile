@@ -1,23 +1,27 @@
 FROM alpine:latest
 
-ADD scripts/* /usr/local/bin/
-
 #Use dash instead busybox
 #edge repository breaks installs
 #RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+TINI_VERSION="20171019"
 RUN chmod +x /usr/local/bin/* && \
     echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk add --no-cache tini && \
-    apk add --no-cache dash@testing && cp /usr/bin/dash /bin/sh && ln -s /bin/busybox /sh && mkdir -p /app /etc/skel
+    apk add --no-cache dash@testing \
+    && apk add --no-cache bash \
+    && rm /bin/sh && ln /usr/bin/dash /bin/sh && ln  /usr/bin/dash /bin/dash \
+    && ln /bin/bash /usr/bin/bash && mkdir -p /app /etc/skel
 
-ADD localtime /etc/localtime
+ADD scripts/* /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/*
 
 VOLUME /etc/skel
 
 WORKDIR /app
 
-ENTRYPOINT ["/sbin/tini", "-g" ,"--", "/usr/local/bin/start.sh"]
+ENTRYPOINT [ "/sbin/tini", "-g" ,"--", "/usr/local/bin/start.sh" ]
 
 CMD [ "/sh" ] 
 
