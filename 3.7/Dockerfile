@@ -6,7 +6,7 @@ FROM alpine:3.7
 ENV TINI_VERSION="20171019"
 #RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
 #    echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories 
-RUN apk add --no-cache tini dash bash \
+RUN apk add --no-cache tini dash bash rsync git \
     && ln /usr/bin/dash /bin/dash \
     && ln /bin/bash /usr/bin/bash 
 
