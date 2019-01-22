@@ -1,7 +1,7 @@
-ARG ALPINE_VERSION=3.8
-FROM alpine:$ALPINE_VERSION
 
-ARG ALPINE_VERSION
+FROM alpine:3.8
+
+ARG ALPINE_VERSION=3.8
 
 ENV SUMMARY="alpine base image"	\
     DESCRIPTION="Alpine base image. The image use scripts and configurations compatible \
