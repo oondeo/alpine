@@ -46,9 +46,10 @@ ENV BASH_ENV=/opt/app-root/etc/scl_enable \
 #Use dash instead busybox
 RUN apk add --no-cache tini dash bash rsync git openssh-client icu-libs \
     && ln /usr/bin/dash /bin/dash \
-    && ln /bin/bash /usr/bin/bash \
+    && ln /bin/bash /usr/bin/bash 
+
 RUN cd /tmp && wget https://raw.githubusercontent.com/oondeo/docker-alpine/master/musl-locales-0.2-r0.apk \
-    && apk add musl-locales-0.2-r0.apk && -f rm musl-locales-0.2-r0.apk
+    && apk add --allow-untrusted musl-locales-0.2-r0.apk && rm -f musl-locales-0.2-r0.apk
 
 RUN mkdir -p /etc/skel /opt/app-root/src /opt/app-root/etc /opt/app-root/bin /opt/app-root/lib \
         /opt/app-root/var/log /opt/app-root/var/run /run /var/run
