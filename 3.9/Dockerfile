@@ -49,11 +49,10 @@ RUN apk add --no-cache tini dash bash rsync git openssh-client \
 RUN mkdir -p /etc/skel /opt/app-root/src /opt/app-root/etc /opt/app-root/bin /opt/app-root/lib \
         /opt/app-root/var/log /opt/app-root/var/run /run /var/run
 
+COPY /root/root/ /
 RUN docker-footer
 
-COPY /root/root/ /
-
-VOLUME /etc/skel
+VOLUME /etc/skel /opt/app-root/src
 
 # Directory with the sources is set as the working directory so all STI scripts
 # can execute relative to this path.
