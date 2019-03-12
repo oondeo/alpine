@@ -44,7 +44,7 @@ ENV BASH_ENV=/opt/app-root/etc/scl_enable \
 
 
 #Use dash instead busybox
-RUN apk add --no-cache tini dash bash rsync git openssh-client icu-libs tzdata \
+RUN apk add --no-cache tini dash bash rsync git openssh-client icu-libs tzdata curl inotify-tools \
     && ln /usr/bin/dash /bin/dash \
     && ln /bin/bash /usr/bin/bash 
 

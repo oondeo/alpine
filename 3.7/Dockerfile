@@ -44,7 +44,7 @@ ENV BASH_ENV=/opt/app-root/etc/scl_enable \
 ARG TINI_VERSION="20171019"
 #RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
 #    echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories 
-RUN apk add --no-cache tini dash bash rsync git \
+RUN apk add --no-cache tini dash bash rsync git  curl inotify-tools  \
     && ln /usr/bin/dash /bin/dash \
     && ln /bin/bash /usr/bin/bash 
 
